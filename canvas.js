@@ -12,6 +12,9 @@ setInterval(draw_clock, 1000);
 //draw
 function draw_clock()
 {
+	const canvas = document.getElementById("canvas");
+	const button = document.getElementById("button-background");
+	canvas.style = "background-color:" + button.value;
 	draw_face(context, radius);
 	draw_numbers(context, radius);
 	draw_time(context, radius);
@@ -80,12 +83,4 @@ function draw_hand(context, position, length, width)
 	context.lineTo(0, -length);
 	context.stroke();
 	context.rotate(-position);
-}
-
-//callbacks
-function callback_background()
-{
-	const canvas = document.getElementById("canvas");
-	const button = document.getElementById("button-background");
-	canvas.style = "background-color:" + button.value;
 }
