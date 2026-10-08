@@ -1,15 +1,375 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<title>Clock Example</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Murillo V. B. Santana</title>
+	<meta name="description" content="Murillo V. B. Santana — Your Title at Your Institution. Short description of your research interests.">
+	<meta name="theme-color" content="#1565c0">
+	<style>
+		:root {
+			--primary: #1565c0;
+			--primary-dark: #0d47a1;
+			--bg: #ffffff;
+			--bg-alt: #f7f7f7;
+			--text: #34495e;
+			--heading: #1a2b3c;
+			--muted: #6b7a8a;
+			--border: #e3e8ee;
+			--card: #ffffff;
+		}
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--bg: #1b1f24;
+				--bg-alt: #22272e;
+				--text: #c9d1d9;
+				--heading: #f0f3f6;
+				--muted: #8b98a5;
+				--border: #30363d;
+				--card: #22272e;
+				--primary: #64a8f0;
+				--primary-dark: #90c2f7;
+			}
+		}
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body {
+			margin: 0;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.65;
+			color: var(--text);
+			background: var(--bg);
+		}
+		a { color: var(--primary); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+		h1, h2, h3 { color: var(--heading); line-height: 1.25; margin: 0 0 .6rem; }
+
+		/* ---------- Navbar ---------- */
+		.navbar {
+			position: sticky; top: 0; z-index: 50;
+			background: var(--bg);
+			border-bottom: 1px solid var(--border);
+			box-shadow: 0 1px 6px rgba(0,0,0,.05);
+		}
+		.navbar-inner {
+			max-width: 1140px; margin: 0 auto; padding: 0 20px;
+			height: 56px; display: flex; align-items: center; justify-content: space-between;
+		}
+		.brand { font-weight: 700; font-size: 1.1rem; color: var(--heading); }
+		.brand:hover { text-decoration: none; color: var(--primary); }
+		.nav-links { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+		.nav-links a { color: var(--text); font-weight: 500; font-size: .95rem; }
+		.nav-links a:hover { color: var(--primary); text-decoration: none; }
+
+		/* ---------- Layout ---------- */
+		.layout {
+			max-width: 1140px; margin: 0 auto; padding: 40px 20px 60px;
+			display: grid; grid-template-columns: 280px 1fr; gap: 48px;
+		}
+		@media (max-width: 860px) {
+			.layout { grid-template-columns: 1fr; gap: 28px; }
+		}
+
+		/* ---------- Profile card ---------- */
+		.profile { text-align: center; align-self: start; }
+		@media (min-width: 861px) { .profile { position: sticky; top: 96px; } }
+		.avatar {
+			width: 200px; height: 200px; border-radius: 50%;
+			margin: 0 auto 16px; display: block; object-fit: cover;
+			background: linear-gradient(135deg, var(--primary), #42a5f5);
+			color: #fff; font-size: 4rem; font-weight: 600;
+			display: flex; align-items: center; justify-content: center;
+			box-shadow: 0 4px 14px rgba(21,101,192,.25);
+		}
+		.profile h2 { font-size: 1.6rem; }
+		.profile .role { font-size: 1.05rem; color: var(--muted); margin: 0; }
+		.profile .org { font-size: 1.05rem; font-weight: 600; margin: 0 0 14px; }
+		.icon-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; padding: 0; margin: 0; list-style: none; }
+		.icon-row a {
+			width: 38px; height: 38px; border-radius: 50%;
+			display: flex; align-items: center; justify-content: center;
+			border: 1px solid var(--border); color: var(--muted);
+			transition: all .15s;
+		}
+		.icon-row a:hover { color: #fff; background: var(--primary); border-color: var(--primary); text-decoration: none; }
+		.icon-row svg { width: 18px; height: 18px; fill: currentColor; }
+
+		/* ---------- Sections ---------- */
+		section { margin-bottom: 52px; }
+		section > h1 {
+			font-size: 1.7rem; padding-bottom: 8px; margin-bottom: 18px;
+			border-bottom: 2px solid var(--primary); display: inline-block;
+		}
+		.callout {
+			background: var(--bg-alt); border-left: 4px solid var(--primary);
+			padding: 14px 18px; border-radius: 4px; margin-top: 20px;
+		}
+		.callout h3 { font-size: 1.05rem; margin-bottom: 6px; }
+		.callout ul { margin: 0; padding-left: 20px; }
+		.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 28px; }
+		@media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+		.two-col h3 { font-size: 1.15rem; }
+		.two-col ul { margin: 0; padding: 0; list-style: none; }
+		.interests li { padding: 4px 0; }
+		.interests li::before { content: "▸ "; color: var(--primary); }
+		.edu li { display: flex; gap: 12px; padding: 6px 0; }
+		.edu .dot { color: var(--primary); }
+		.edu .deg { font-weight: 600; color: var(--heading); }
+		.edu .inst { color: var(--muted); font-size: .95rem; }
+
+		/* ---------- Publications ---------- */
+		.pub {
+			display: grid; grid-template-columns: 1fr 200px; gap: 22px;
+			padding: 22px 0; border-bottom: 1px solid var(--border);
+		}
+		.pub:first-of-type { padding-top: 6px; }
+		@media (max-width: 640px) {
+			.pub { grid-template-columns: 1fr; }
+			.pub .thumb { order: -1; }
+		}
+		.pub h3 { font-size: 1.12rem; margin-bottom: 6px; }
+		.pub h3 a { color: var(--heading); }
+		.pub h3 a:hover { color: var(--primary); text-decoration: none; }
+		.pub .abstract { font-size: .93rem; color: var(--muted); margin: 0 0 8px; }
+		.pub .authors { font-size: .93rem; margin: 0; }
+		.pub .authors b { color: var(--heading); }
+		.pub .venue { font-size: .9rem; color: var(--muted); margin: 2px 0 10px; }
+		.pub .venue em { color: var(--text); }
+		.btns { display: flex; gap: 8px; flex-wrap: wrap; }
+		.btn {
+			font: inherit; font-size: .82rem; padding: 3px 12px; cursor: pointer;
+			border: 1px solid var(--border); background: var(--card); color: var(--text);
+			border-radius: 4px; transition: all .15s;
+		}
+		.btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); text-decoration: none; }
+		.thumb {
+			width: 100%; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden;
+			background: linear-gradient(135deg, #bbdefb, #1565c0);
+			display: flex; align-items: center; justify-content: center;
+			color: rgba(255,255,255,.85); font-size: .8rem; text-align: center; padding: 8px;
+		}
+		.thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+		/* ---------- Footer ---------- */
+		footer {
+			border-top: 1px solid var(--border); background: var(--bg-alt);
+			text-align: center; padding: 26px 20px; font-size: .85rem; color: var(--muted);
+		}
+		footer p { margin: 4px 0; }
+
+		/* ---------- Cite modal ---------- */
+		.modal-backdrop {
+			position: fixed; inset: 0; background: rgba(0,0,0,.5);
+			display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px;
+		}
+		.modal-backdrop.open { display: flex; }
+		.modal {
+			background: var(--card); color: var(--text); border-radius: 8px;
+			width: 100%; max-width: 560px; padding: 20px 22px; box-shadow: 0 10px 40px rgba(0,0,0,.3);
+		}
+		.modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+		.modal-head h5 { margin: 0; font-size: 1.1rem; color: var(--heading); }
+		.modal-close { background: none; border: 0; font-size: 1.6rem; line-height: 1; cursor: pointer; color: var(--muted); }
+		.modal pre {
+			background: var(--bg-alt); border: 1px solid var(--border); border-radius: 4px;
+			padding: 12px; font-size: .8rem; overflow: auto; max-height: 240px; margin: 0 0 14px; white-space: pre-wrap;
+		}
+		.modal-actions { display: flex; gap: 8px; }
+	</style>
 </head>
-
 <body>
-	<p> Background color: <input type="color" id="button-background" value="#0000ff"></input> </p>
-	<canvas id="canvas" width="400" height="400" style="background-color:#0000ff"> </canvas>
-	<script src = "canvas.js"> </script>
-</body>
 
+	<!-- ===== NAVBAR ===== -->
+	<header class="navbar">
+		<div class="navbar-inner">
+			<a class="brand" href="#about">Your Name</a>
+			<ul class="nav-links">
+				<li><a href="#about">Home</a></li>
+				<li><a href="#publications">Publications</a></li>
+			</ul>
+		</div>
+	</header>
+
+	<div class="layout" id="about">
+
+		<!-- ===== PROFILE SIDEBAR ===== -->
+		<aside class="profile">
+			<img class="avatar" src="avatar.png" alt="Murillo V. B. Santana">
+			<h2>Murillo V. B. Santana</h2>
+			<p class="role">Assistant Professor</p>
+			<p class="org"><a href="https://example.edu" target="_blank" rel="noopener">Aix-Marseille Université</a></p>
+			<ul class="icon-row">
+				<li><a href="mailto:you@example.com" title="Email" aria-label="Email">
+					<svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a></li>
+				<li><a href="https://scholar.google.com/citations?hl=fr&user=AAQjJo4AAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+					<svg viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6 9.2v4L12 20l6-3.8v-4L12 15.5l-6-3.3z"/></svg></a></li>
+				<li><a href="https://github.com/murilloeng" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+					<svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a></li>
+				<li><a href="uploads/cv.pdf" title="CV" aria-label="CV">
+					<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg></a></li>
+			</ul>
+		</aside>
+
+		<!-- ===== MAIN CONTENT ===== -->
+		<main>
+
+			<section id="biography">
+				<h1>Biography</h1>
+				<p>
+					Your Name is a <strong>Your Title</strong> at Your Institution, where you lead the
+					Your Group Name group. Your research focuses on topic one, topic two, and topic three.
+					Describe the bigger goal of your work and where it applies.
+				</p>
+				<p>
+					Mention your background here: where you studied, who you worked with, and anything else
+					visitors should know about you.
+				</p>
+
+				<div class="callout">
+					<h3>Join Our Team</h3>
+					<ul>
+						<li><strong>Students:</strong> describe how to apply, with a link to the application page.</li>
+						<li><strong>Postdocs:</strong> reach out by email with your CV and research statement.</li>
+					</ul>
+				</div>
+
+				<div class="two-col">
+					<div class="interests">
+						<h3>Interests</h3>
+						<ul>
+							<li>Research interest one</li>
+							<li>Research interest two</li>
+							<li>Research interest three</li>
+							<li>Research interest four</li>
+						</ul>
+					</div>
+					<div class="edu">
+						<h3>Education</h3>
+						<ul>
+							<li>
+								<span class="dot">●</span>
+								<div><div class="deg">PhD in Your Field, 20XX – 20XX</div><div class="inst">Your University</div></div>
+							</li>
+							<li>
+								<span class="dot">●</span>
+								<div><div class="deg">BSc in Your Field, 20XX – 20XX</div><div class="inst">Your University</div></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="publications">
+				<h1>Publications</h1>
+
+				<article class="pub">
+					<div>
+						<h3><a href="#">Title of Your Most Recent Paper</a></h3>
+						<p class="abstract">A two-or-three-sentence summary of the paper goes here. Keep it short; visitors can follow the link for the full abstract and details …</p>
+						<p class="authors"><b>Your Name</b>, Coauthor One, Coauthor Two</p>
+						<p class="venue">November, 2024 &nbsp;<em>Journal or Conference Name</em></p>
+						<div class="btns">
+							<button class="btn" data-cite="Name2024Title">Cite</button>
+							<a class="btn" href="https://doi.org/" target="_blank" rel="noopener">DOI</a>
+							<a class="btn" href="#" target="_blank" rel="noopener">URL</a>
+						</div>
+					</div>
+					<div class="thumb"><!-- <img src="media/paper1.webp" alt=""> -->Paper image</div>
+				</article>
+
+				<article class="pub">
+					<div>
+						<h3><a href="#">Title of Another Paper</a></h3>
+						<p class="abstract">Another short summary of your work. Describe the problem, the approach, and the key result in plain language …</p>
+						<p class="authors">Coauthor One, <b>Your Name</b>, Coauthor Two, Coauthor Three</p>
+						<p class="venue">January, 2024 &nbsp;<em>Another Venue</em></p>
+						<div class="btns">
+							<button class="btn" data-cite="Name2024Another">Cite</button>
+							<a class="btn" href="https://doi.org/" target="_blank" rel="noopener">DOI</a>
+							<a class="btn" href="#" target="_blank" rel="noopener">URL</a>
+						</div>
+					</div>
+					<div class="thumb">Paper image</div>
+				</article>
+
+				<article class="pub">
+					<div>
+						<h3><a href="#">Title of an Older Paper</a></h3>
+						<p class="abstract">An older publication summary. You can add as many entries as you like by copying one of these blocks …</p>
+						<p class="authors"><b>Your Name</b>, Coauthor One</p>
+						<p class="venue">July, 2022 &nbsp;<em>Older Venue</em></p>
+						<div class="btns">
+							<button class="btn" data-cite="Name2022Older">Cite</button>
+							<a class="btn" href="https://doi.org/" target="_blank" rel="noopener">DOI</a>
+							<a class="btn" href="#" target="_blank" rel="noopener">URL</a>
+						</div>
+					</div>
+					<div class="thumb">Paper image</div>
+				</article>
+			</section>
+
+		</main>
+	</div>
+
+	<footer>
+		<p>© 2026 Your Name. All rights reserved.</p>
+	</footer>
+
+	<!-- ===== CITE MODAL ===== -->
+	<div class="modal-backdrop" id="citeModal" role="dialog" aria-modal="true" aria-labelledby="citeTitle">
+		<div class="modal">
+			<div class="modal-head">
+				<h5 id="citeTitle">Cite</h5>
+				<button class="modal-close" id="citeClose" aria-label="Close">&times;</button>
+			</div>
+			<pre id="citeText"></pre>
+			<div class="modal-actions">
+				<button class="btn" id="citeCopy">Copy</button>
+				<button class="btn" id="citeDownload">Download</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		(function () {
+			var modal = document.getElementById('citeModal');
+			var text = document.getElementById('citeText');
+			var key = '';
+
+			function open(k) {
+				key = k;
+				text.textContent =
+					'@article{' + k + ',\n' +
+					'	title	 = {Paper title},\n' +
+					'	author	= {Your Name and Coauthor One},\n' +
+					'	journal = {Journal or Conference},\n' +
+					'	year		= {2024},\n' +
+					'	doi		 = {10.xxxx/xxxxx}\n' +
+					'}';
+				modal.classList.add('open');
+			}
+			function close() { modal.classList.remove('open'); }
+
+			document.querySelectorAll('[data-cite]').forEach(function (b) {
+				b.addEventListener('click', function () { open(b.getAttribute('data-cite')); });
+			});
+			document.getElementById('citeClose').addEventListener('click', close);
+			modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+			document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+			document.getElementById('citeCopy').addEventListener('click', function () {
+				if (navigator.clipboard) navigator.clipboard.writeText(text.textContent);
+			});
+			document.getElementById('citeDownload').addEventListener('click', function () {
+				var blob = new Blob([text.textContent], { type: 'text/plain' });
+				var a = document.createElement('a');
+				a.href = URL.createObjectURL(blob);
+				a.download = key + '.bib';
+				a.click();
+				URL.revokeObjectURL(a.href);
+			});
+		})();
+	</script>
+</body>
 </html>
