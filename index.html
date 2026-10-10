@@ -120,7 +120,7 @@
 
 		/* ---------- Publications ---------- */
 		.pub {
-			display: grid; grid-template-columns: 1fr 200px; gap: 22px;
+			display: block;
 			padding: 22px 0; border-bottom: 1px solid var(--border);
 		}
 		.pub:first-of-type { padding-top: 6px; }
@@ -150,6 +150,12 @@
 			color: rgba(255,255,255,.85); font-size: .8rem; text-align: center; padding: 8px;
 		}
 		.thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+		.year { font-size: 1.15rem; color: var(--primary); margin: 26px 0 0; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+		.year:first-of-type { margin-top: 6px; }
+		.pub { padding: 16px 0; }
+		.pub h3 { margin-bottom: 4px; }
+		.scholar-link { font-size: .95rem; color: var(--muted); margin: 0 0 8px; }
 
 		/* ---------- Footer ---------- */
 		footer {
@@ -232,14 +238,8 @@
 
 			<section id="biography">
 				<h1>Biography</h1>
-				<p>
-					Your Name is a <strong>Your Title</strong> at Your Institution, where you lead the
-					Your Group Name group. Your research focuses on topic one, topic two, and topic three.
-					Describe the bigger goal of your work and where it applies.
-				</p>
-				<p>
-					Mention your background here: where you studied, who you worked with, and anything else
-					visitors should know about you.
+				<p style="text-align: justify; hyphens: auto;">
+					My name is Murillo Santana and I am an <strong>Assistant Professor</strong> at Aix-Marseille Université, where I work at the IUT GCCD department and the IUSTI laboratory. My research focuses on the stability and nonlinear behavior of structures, with an emphasis on tensegrity, deployable and morpho-plastic structures. By combining analytical solutions, geometrically and material nonlinear finite element formulations, and nonlinear dynamics, my work aims to predict the load capacity, instability, and dynamic response of lightweight mechanical systems.
 				</p>
 
 				<div class="callout">
@@ -265,15 +265,15 @@
 						<ul>
 							<li>
 								<span class="dot">●</span>
-								<div><div class="deg">BSc in Civil Engineering, 2008 - 2013</div><div class="inst"><a href="https://em.ufop.br/">Federal University of Ouro Preto, Brazil</div></div>
+								<div><div class="deg">BSc in Civil Engineering, 2008 - 2013</div><div class="inst"><a href="https://em.ufop.br/">Federal University of Ouro Preto, Brazil</a></div></div>
 							</li>
 							<li>
 								<span class="dot">●</span>
-								<div><div class="deg">MSc in Civil Engineering, 2013 - 2015</div><div class="inst"><a href="http://www.repositorio.ufop.br/handle/123456789/5463">Federal University of Ouro Preto, Brazil</div></div>
+								<div><div class="deg">MSc in Civil Engineering, 2013 - 2015</div><div class="inst"><a href="http://www.repositorio.ufop.br/handle/123456789/5463">Federal University of Ouro Preto, Brazil</a></div></div>
 							</li>
 							<li>
 								<span class="dot">●</span>
-								<div><div class="deg">PhD in Engineering Sciences, 2015 - 2019</div><div class="inst"><a href="http://hdl.handle.net/2013/ULB-DIPOT:oai:dipot.ulb.ac.be:2013/288192">Université Libre de Bruxelles</div><div class="inst"><a href="https://doi.org/10.17771/PUCRio.acad.51935">Pontifical Catholic University of Rio de Janeiro</div></div>
+								<div><div class="deg">PhD in Engineering Sciences, 2015 - 2019</div><div class="inst"><a href="http://hdl.handle.net/2013/ULB-DIPOT:oai:dipot.ulb.ac.be:2013/288192">Université Libre de Bruxelles</a></div><div class="inst"><a href="https://doi.org/10.17771/PUCRio.acad.51935">Pontifical Catholic University of Rio de Janeiro</a></div></div>
 							</li>
 						</ul>
 					</div>
@@ -281,52 +281,10 @@
 			</section>
 
 			<section id="publications">
-				<h1>Publications</h1>
-
-				<article class="pub">
-					<div>
-						<h3><a href="#">Title of Your Most Recent Paper</a></h3>
-						<p class="abstract">A two-or-three-sentence summary of the paper goes here. Keep it short; visitors can follow the link for the full abstract and details …</p>
-						<p class="authors"><b>Your Name</b>, Coauthor One, Coauthor Two</p>
-						<p class="venue">November, 2024 &nbsp;<em>Journal or Conference Name</em></p>
-						<div class="btns">
-							<button class="btn" data-cite="Name2024Title">Cite</button>
-							<a class="btn" href="https://doi.org/" target="_blank" rel="noopener">DOI</a>
-							<a class="btn" href="#" target="_blank" rel="noopener">URL</a>
-						</div>
-					</div>
-					<div class="thumb"><!-- <img src="media/paper1.webp" alt=""> -->Paper image</div>
-				</article>
-
-				<article class="pub">
-					<div>
-						<h3><a href="#">Title of Another Paper</a></h3>
-						<p class="abstract">Another short summary of your work. Describe the problem, the approach, and the key result in plain language …</p>
-						<p class="authors">Coauthor One, <b>Your Name</b>, Coauthor Two, Coauthor Three</p>
-						<p class="venue">January, 2024 &nbsp;<em>Another Venue</em></p>
-						<div class="btns">
-							<button class="btn" data-cite="Name2024Another">Cite</button>
-							<a class="btn" href="https://doi.org/" target="_blank" rel="noopener">DOI</a>
-							<a class="btn" href="#" target="_blank" rel="noopener">URL</a>
-						</div>
-					</div>
-					<div class="thumb">Paper image</div>
-				</article>
-
-				<article class="pub">
-					<div>
-						<h3><a href="#">Title of an Older Paper</a></h3>
-						<p class="abstract">An older publication summary. You can add as many entries as you like by copying one of these blocks …</p>
-						<p class="authors"><b>Your Name</b>, Coauthor One</p>
-						<p class="venue">July, 2022 &nbsp;<em>Older Venue</em></p>
-						<div class="btns">
-							<button class="btn" data-cite="Name2022Older">Cite</button>
-							<a class="btn" href="https://doi.org/" target="_blank" rel="noopener">DOI</a>
-							<a class="btn" href="#" target="_blank" rel="noopener">URL</a>
-						</div>
-					</div>
-					<div class="thumb">Paper image</div>
-				</article>
+				<h1>Selected Publications</h1>
+				<p class="scholar-link">Full list and citation counts on
+					<a href="https://scholar.google.com/citations?hl=fr&user=AAQjJo4AAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
+				<div id="pub-list"></div>
 			</section>
 
 		</main>
@@ -353,20 +311,329 @@
 
 	<script>
 		(function () {
+			var ME = 'Murillo V. B. Santana';
+			function P(key, year, title, authors, venue, bib) {
+				return { key: key, year: year, title: title, authors: authors, venue: venue, bib: bib };
+			}
+			var PUBS = [
+				P('santana2026stability', 2026,
+					'Stability and load capacity of cylindrical tensegrity modules considering geometrical and material nonlinear behavior',
+					[ME, 'J. Marthelot', 'P. B. Gonçalves'],
+					'Engineering Structures, 364, 123159',
+					String.raw`@article{santana2026stability,
+  title={Stability and load capacity of cylindrical tensegrity modules considering geometrical and material nonlinear behavior},
+  author={Santana, MVB and Marthelot, J and Gon{\c{c}}alves, PB},
+  journal={Engineering Structures},
+  volume={364},
+  pages={123159},
+  year={2026},
+  publisher={Elsevier}
+}`),
+				P('chhang2025energy', 2025,
+					'An Energy-Conserving Time Integration Scheme for Nonlinear Dynamics Analysis of Geometrically Exact 3D Euler–Bernoulli Beams',
+					['Sophy Chhang', 'Carlo Sansour', 'Pisey Keo', 'Mohammed Hjiaj', 'Jean-Marc Battini', ME],
+					'International Journal for Numerical Methods in Engineering, 126(1), e7611',
+					String.raw`@article{chhang2025energy,
+  title={An Energy-Conserving Time Integration Scheme for Nonlinear Dynamics Analysis of Geometrically Exact 3D Euler--Bernoulli Beams},
+  author={Chhang, Sophy and Sansour, Carlo and Keo, Pisey and Hjiaj, Mohammed and Battini, Jean-Marc and Santana, MV Bento},
+  journal={International Journal for Numerical Methods in Engineering},
+  volume={126},
+  number={1},
+  pages={e7611},
+  year={2025},
+  publisher={Wiley Online Library}
+}`),
+				P('azorin2024computational', 2024,
+					'Computational investigation of bistable and non-bistable deployable scissor structures',
+					['Rodrigo Gimenez Azorin', ME, 'Peter Z. Berke'],
+					'Structures, 61, 106063',
+					String.raw`@inproceedings{azorin2024computational,
+  title={Computational investigation of bistable and non-bistable deployable scissor structures},
+  author={Azorin, Rodrigo Gimenez and Santana, Murillo VB and Berke, Peter Z},
+  booktitle={Structures},
+  volume={61},
+  pages={106063},
+  year={2024},
+  organization={Elsevier}
+}`),
+				P('santana2023exactwarping', 2023,
+					'Exact solutions for the coupled warping beam problem',
+					[ME, 'M. Hjiaj', 'H. Somja'],
+					'Thin-Walled Structures, 186, 110672',
+					String.raw`@article{santana2023exactwarping,
+  title={Exact solutions for the coupled warping beam problem},
+  author={Santana, MVB and Hjiaj, M and Somja, H},
+  journal={Thin-Walled Structures},
+  volume={186},
+  pages={110672},
+  year={2023},
+  publisher={Elsevier}
+}`),
+				P('santana2023exactode', 2023,
+					'Exact solutions of nonlinear second-order autonomous ordinary differential equations: application to mechanical systems',
+					[ME],
+					'Dynamics, 3(3), 444–467',
+					String.raw`@article{santana2023exactode,
+  title={Exact solutions of nonlinear second-order autonomous ordinary differential equations: application to mechanical systems},
+  author={Santana, Murillo VB},
+  journal={Dynamics},
+  volume={3},
+  number={3},
+  pages={444--467},
+  year={2023},
+  publisher={MDPI}
+}`),
+				P('lebastard2022elastic', 2022,
+					'Elastic lateral-torsional buckling of beams with warping restraints at supports',
+					['Maxime Lebastard', 'Mael Couchaux', ME, 'Alain Bureau', 'Mohammed Hjiaj'],
+					'Journal of Constructional Steel Research, 197, 107410',
+					String.raw`@article{lebastard2022elastic,
+  title={Elastic lateral-torsional buckling of beams with warping restraints at supports},
+  author={Lebastard, Maxime and Couchaux, Mael and Santana, Murillo VB and Bureau, Alain and Hjiaj, Mohammed},
+  journal={Journal of Constructional Steel Research},
+  volume={197},
+  pages={107410},
+  year={2022},
+  publisher={Elsevier}
+}`),
+				P('santana2022modal', 2022,
+					'Modal analysis of a bistable deployable module with a refined joint model',
+					[ME, 'M. Hjiaj', 'P. Z. Berke'],
+					'Engineering Structures, 269, 114798',
+					String.raw`@article{santana2022modal,
+  title={Modal analysis of a bistable deployable module with a refined joint model},
+  author={Santana, MVB and Hjiaj, M and Berke, PZ},
+  journal={Engineering Structures},
+  volume={269},
+  pages={114798},
+  year={2022},
+  publisher={Elsevier}
+}`),
+				P('b2022design', 2022,
+					'Design, fabrication and analysis of a bio-based tensegrity structure using non-destructive testing',
+					['Nathalia B. de Albuquerque', 'Cássio M. R. Gaspar', 'Mario Seixas', ME, 'Daniel C. T. Cardoso'],
+					'Engineering Structures, 265, 114457',
+					String.raw`@article{b2022design,
+  title={Design, fabrication and analysis of a bio-based tensegrity structure using non-destructive testing},
+  author={B. de Albuquerque, Nathalia and M. R. Gaspar, C{\'a}ssio and Seixas, Mario and V. B. Santana, Murillo and C. T. Cardoso, Daniel},
+  journal={Engineering Structures},
+  volume={265},
+  pages={114457},
+  year={2022}
+}`),
+				P('santana2022efficient', 2022,
+					'Efficient and low memory strain-rate independent return mapping algorithm for general yield surfaces and stress states',
+					[ME, 'P. Keo', 'Mohammed Hjiaj'],
+					'Advances in Engineering Software, 164, 103067',
+					String.raw`@article{santana2022efficient,
+  title={Efficient and low memory strain-rate independent return mapping algorithm for general yield surfaces and stress states},
+  author={Santana, MVB and Keo, P and Hjiaj, Mohammed},
+  journal={Advances in Engineering Software},
+  volume={164},
+  pages={103067},
+  year={2022},
+  publisher={Elsevier}
+}`),
+				P('santana2022equilibrium', 2022,
+					'An equilibrium-based formulation with nonlinear configuration dependent interpolation for geometrically exact 3D beams',
+					[ME, 'Carlo Sansour', 'Mohammed Hjiaj', 'Hugues Somja'],
+					'International Journal for Numerical Methods in Engineering, 123(2), 444–464',
+					String.raw`@article{santana2022equilibrium,
+  title={An equilibrium-based formulation with nonlinear configuration dependent interpolation for geometrically exact 3D beams},
+  author={Santana, Murillo VB and Sansour, Carlo and Hjiaj, Mohammed and Somja, Hugues},
+  journal={International Journal for Numerical Methods in Engineering},
+  volume={123},
+  number={2},
+  pages={444--464},
+  year={2022},
+  publisher={John Wiley \& Sons, Inc. Hoboken, USA}
+}`),
+				P('santana2021corotational', 2021,
+					'Corotational 3D joint finite element tailored for the simulation of bistable deployable structures',
+					[ME, 'L. I. W. Arnouts', 'Thierry J. Massart', 'Paulo B. Gonçalves', 'P. Z. Berke'],
+					'Engineering Structures, 227, 111387',
+					String.raw`@article{santana2021corotational,
+  title={Corotational 3D joint finite element tailored for the simulation of bistable deployable structures},
+  author={Santana, Murillo VB and Arnouts, LIW and Massart, Thierry Jacques and Gon{\c{c}}alves, Paulo B and Berke, PZ},
+  journal={Engineering Structures},
+  volume={227},
+  pages={111387},
+  year={2021},
+  publisher={Elsevier}
+}`),
+				P('santana2021closed', 2021,
+					'Closed-form solutions for the symmetric nonlinear free oscillations of pyramidal trusses',
+					[ME, 'P. B. Gonçalves', 'R. A. M. Silveira'],
+					'Physica D: Nonlinear Phenomena, 417, 132814',
+					String.raw`@article{santana2021closed,
+  title={Closed-form solutions for the symmetric nonlinear free oscillations of pyramidal trusses},
+  author={Santana, MVB and Gon{\c{c}}alves, PB and Silveira, RAM},
+  journal={Physica D: Nonlinear Phenomena},
+  volume={417},
+  pages={132814},
+  year={2021},
+  publisher={North-Holland}
+}`),
+				P('santana2019stability', 2019,
+					'Stability and load capacity of an elasto-plastic pyramidal truss',
+					[ME, 'P. B. Gonçalves', 'R. A. M. Silveira'],
+					'International Journal of Solids and Structures, 171, 158–173',
+					String.raw`@article{santana2019stability,
+  title={Stability and load capacity of an elasto-plastic pyramidal truss},
+  author={Santana, MVB and Gon{\c{c}}alves, PB and Silveira, RADM},
+  journal={International Journal of Solids and Structures},
+  volume={171},
+  pages={158--173},
+  year={2019},
+  publisher={Pergamon}
+}`),
+				P('santana2019nonlinear', 2019,
+					'Nonlinear oscillations and dynamic stability of an elastoplastic pyramidal truss',
+					[ME, 'Paulo B. Gonçalves', 'Ricardo A. M. Silveira'],
+					'Nonlinear Dynamics, 98(4), 2847–2877',
+					String.raw`@article{santana2019nonlinear,
+  title={Nonlinear oscillations and dynamic stability of an elastoplastic pyramidal truss: MVB Santana et al.},
+  author={Santana, Murillo VB and Gon{\c{c}}alves, Paulo B and Silveira, Ricardo AM},
+  journal={Nonlinear Dynamics},
+  volume={98},
+  number={4},
+  pages={2847--2877},
+  year={2019},
+  publisher={Springer Netherlands Dordrecht}
+}`),
+				P('santana2019numerical', 2019,
+					'Numerical fundamentals and interactive computer graphics system for the nonlinear analysis of planar frames',
+					[ME, 'Ricardo A. M. Silveira'],
+					'REM – International Engineering Journal, 72(2), 199–207',
+					String.raw`@article{santana2019numerical,
+  title={Numerical fundamentals and interactive computer graphics system for the nonlinear analysis of planar frames},
+  author={Santana, Murillo Vin{\'\i}cius Bento and Silveira, Ricardo Azoubel da Mota},
+  journal={REM-International Engineering Journal},
+  volume={72},
+  number={2},
+  pages={199--207},
+  year={2019},
+  publisher={Funda{\c{c}}{\~a}o Gorceix}
+}`),
+				P('barcellos2019nonlinear', 2019,
+					'Nonlinear behavior and instability of deployable arches',
+					['Ana Beatriz G. Barcellos', ME, 'Paulo B. Gonçalves'],
+					'Stability and Ductility of Steel Structures (SDSS 2019), Prague, p. 139',
+					String.raw`@inproceedings{barcellos2019nonlinear,
+  title={Nonlinear behavior and instability of deployable arches},
+  author={Barcellos, Ana Beatriz G and Santana, Murillo VB and Gon{\c{c}}alves, Paulo B},
+  booktitle={Stability and Ductility of Steel Structures 2019: Proceedings of the International Colloquia on Stability and Ductility of Steel Structures (SDSS 2019), September 11-13, 2019, Prague, Czech Republic},
+  pages={139},
+  year={2019},
+  organization={CRC Press}
+}`),
+				P('santana2019tailored', 2019,
+					'Tailored corotational formulations for the nonlinear static and dynamic analysis of bistable structures',
+					[ME],
+					'PhD thesis, Pontifical Catholic University of Rio de Janeiro',
+					String.raw`@phdthesis{santana2019tailored,
+  title={Tailored corotational formulations for the nonlinear static and dynamic analysis of bistable Structures},
+  author={Santana, MVB},
+  year={2019},
+  school={Pontifical Catholic University of Rio de Janeiro}
+}`),
+				P('santana2018static', 2018,
+					'Static stability and load capacity of pyramidal trusses',
+					[ME, 'Paulo B. Gonçalves', 'Ricardo A. M. Silveira'],
+					'MATEC Web of Conferences, 148, 07005',
+					String.raw`@inproceedings{santana2018static,
+  title={Static stability and load capacity of pyramidal trusses},
+  author={Santana, Murillo VB and Gon{\c{c}}alves, Paulo B and Silveira, Ricardo AM},
+  booktitle={MATEC Web Conf},
+  volume={148},
+  pages={07005},
+  year={2018}
+}`),
+				P('santana2017static', 2017,
+					'Static and Dynamic Instability of Pyramidal Truss',
+					[ME, 'Paulo B. Gonçalves', 'Ricardo A. M. Silveira', 'Peter Z. Berke'],
+					'International Conference on Engineering Vibration (ICoEV 2017)',
+					String.raw`@inproceedings{santana2017static,
+  title={Static and Dynamic Instability of Pyramidal Truss},
+  author={Santana, Murillo Vinicius Bento and Gon{\c{c}}alves, Paulo Batista and da Mota Silveira, Ricardo Azoubel and Berke, Peter Zoltan},
+  booktitle={International Conference on Engineering Vibration 2017},
+  year={2017}
+}`),
+				P('rodrigues2017avaliaccao', 2017,
+					'Avaliação de uma formulação completa da matriz de rigidez para análise não linear de estruturas',
+					['Marcos A. C. Rodrigues', 'R. B. Burgos', 'L. F. Martha', ME],
+					'XXXVIII Iberian Latin American Congress on Computational Methods in Engineering (CILAMCE), Florianópolis',
+					String.raw`@inproceedings{rodrigues2017avaliaccao,
+  title={Avalia{\c{c}}{\~a}o de uma formula{\c{c}}{\~a}o completa da matriz de rigidez para an{\'a}lise n{\~a}o linear de estruturas},
+  author={Rodrigues, Marcos AC and Burgos, RB and Martha, LF and Santana, MVB},
+  booktitle={XXXVIII Iberian Latin American Congress on Computational Methods in Engineering, Florian{\'o}polis, SC, Brazil},
+  year={2017}
+}`),
+				P('santana2015analise', 2015,
+					'Análise estática não linear de estruturas de concreto armado submetidas ao colapso progressivo',
+					[ME, 'P. G. Batista', 'Ricardo A. M. Silveira', 'Peter Berke'],
+					'36th Ibero-Latin American Congress on Numerical Methods in Engineering (CILAMCE)',
+					String.raw`@inproceedings{santana2015analise,
+  title={An{\'a}lise est{\'a}tica nao linear de estruturas de concreto armado submetidas ao colapso progressivo: Static non-linear analysis of reinforced concrete structures subject to progressive collapse},
+  author={Santana, Murillo VB and Batista, PG and Silveira, Ricardo AM and Berke, Peter},
+  booktitle={Proceedings of the 36th Ibero-Latin American Congress on Numerical Methods in Engineering (CILAMCE)},
+  year={2015}
+}`),
+				P('santana2015desenvolvimento', 2015,
+					'Desenvolvimento de sistema computacional via MATLAB/GUI (Graphical User Interface) para análise geometricamente não linear de estruturas',
+					[ME],
+					'MSc thesis, Federal University of Ouro Preto',
+					String.raw`@phdthesis{santana2015desenvolvimento,
+  title={Desenvolvimento de sistema computacional via MATLAB/GUI (Graphical User Interface) para an{\'a}lise geometricamente n{\~a}o linear de estruturas},
+  author={Santana, Murillo Vin{\'\i}cius Bento},
+  year={2015},
+  school={disserta{\c{c}}{\~a}o de mestrado, UFOP}
+}`),
+				P('santana2014sistema', 2014,
+					'Sistema computacional gráfico interativo para problemas de instabilidade em pórticos planos',
+					[ME, 'Ricardo A. M. Silveira'],
+					'XXXV Iberian Latin American Congress on Computational Methods in Engineering (CILAMCE), Fortaleza',
+					String.raw`@inproceedings{santana2014sistema,
+  title={Sistema Computacional gr{\'a}fico interativo para problemas de instabilidade em p{\'o}rticos planos},
+  author={Santana, Murillo VB and Silveira, Ricardo AM},
+  booktitle={XXXV Iberian Latin American Congress on Computational Methods in Engineering, Fortaleza, Brazil},
+  year={2014}
+}`)
+			];
+
+			// ---------- render ----------
+			function esc(s) {
+				return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+			}
+			var bibs = {};
+			var out = '';
+			var lastYear = null;
+			PUBS.forEach(function (p) {
+				bibs[p.key] = p.bib;
+				if (p.year !== lastYear) {
+					out += '<h2 class="year">' + p.year + '</h2>';
+					lastYear = p.year;
+				}
+				var authors = p.authors.map(function (a) {
+					return a === ME ? '<b>' + esc(a) + '</b>' : esc(a);
+				}).join(', ');
+				out += '<article class="pub"><div>' +
+					'<h3>' + esc(p.title) + '</h3>' +
+					'<p class="authors">' + authors + '</p>' +
+					'<p class="venue"><em>' + esc(p.venue) + '</em></p>' +
+					'<div class="btns"><button class="btn" data-cite="' + esc(p.key) + '">Cite</button></div>' +
+					'</div></article>';
+			});
+			document.getElementById('pub-list').innerHTML = out;
+
+			// ---------- cite modal ----------
 			var modal = document.getElementById('citeModal');
 			var text = document.getElementById('citeText');
 			var key = '';
 
 			function open(k) {
 				key = k;
-				text.textContent =
-					'@article{' + k + ',\n' +
-					'	title	 = {Paper title},\n' +
-					'	author	= {Your Name and Coauthor One},\n' +
-					'	journal = {Journal or Conference},\n' +
-					'	year		= {2024},\n' +
-					'	doi		 = {10.xxxx/xxxxx}\n' +
-					'}';
+				text.textContent = bibs[k] || '';
 				modal.classList.add('open');
 			}
 			function close() { modal.classList.remove('open'); }
